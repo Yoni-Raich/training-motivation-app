@@ -1,0 +1,54 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="80dp"
+    android:viewportWidth="120"
+    android:viewportHeight="80">
+    
+    <!-- Shadow -->
+    <path
+        android:fillColor="#33000000"
+        android:pathData="M 10 75 Q 60 70 110 75 Q 110 80 60 80 Q 10 80 10 75 Z"/>
+        
+    <!-- Main Body Bottom -->
+    <path
+        android:fillColor="#E53935"
+        android:pathData="M 15 40 h 90 a 10 10 0 0 1 10 10 v 10 a 10 10 0 0 1 -10 10 h -90 a 10 10 0 0 1 -10 -10 v -10 a 10 10 0 0 1 10 -10 z" />
+        
+    <!-- Main Body Top (Cabin) -->
+    <path
+        android:fillColor="#EF5350"
+        android:pathData="M 30 40 l 15 -25 h 30 l 15 25 z" />
+        
+    <!-- Windows -->
+    <path
+        android:fillColor="#81D4FA"
+        android:pathData="M 35 38 l 10 -18 h 12 v 18 z" />
+    <path
+        android:fillColor="#81D4FA"
+        android:pathData="M 61 20 h 12 l 10 18 h -22 z" />
+        
+    <!-- Wheels -->
+    <path
+        android:fillColor="#424242"
+        android:pathData="M 30 70 m -12 0 a 12 12 0 1 1 24 0 a 12 12 0 1 1 -24 0" />
+    <path
+        android:fillColor="#BDBDBD"
+        android:pathData="M 30 70 m -5 0 a 5 5 0 1 1 10 0 a 5 5 0 1 1 -10 0" />
+        
+    <path
+        android:fillColor="#424242"
+        android:pathData="M 90 70 m -12 0 a 12 12 0 1 1 24 0 a 12 12 0 1 1 -24 0" />
+    <path
+        android:fillColor="#BDBDBD"
+        android:pathData="M 90 70 m -5 0 a 5 5 0 1 1 10 0 a 5 5 0 1 1 -10 0" />
+        
+    <!-- Headlight -->
+    <path
+        android:fillColor="#FFF59D"
+        android:pathData="M 110 45 m -4 0 a 4 4 0 1 1 8 0 a 4 4 0 1 1 -8 0" />
+        
+    <!-- Tail light -->
+    <path
+        android:fillColor="#B71C1C"
+        android:pathData="M 5 43 h 5 v 8 h -5 z" />
+</vector>

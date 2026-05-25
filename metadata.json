@@ -1,0 +1,6 @@
+{
+  "name": "מרוץ ההצלחות",
+  "description": "אפליקציית חיזוק חיובי לילדים המעודדת הכנת שיעורי בית דרך התקדמות במסלול ויזואלי",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

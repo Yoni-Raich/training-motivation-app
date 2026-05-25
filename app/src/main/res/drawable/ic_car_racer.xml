@@ -1,0 +1,49 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="80dp"
+    android:viewportWidth="120"
+    android:viewportHeight="80">
+
+    <!-- Shadow -->
+    <path
+        android:fillColor="#33000000"
+        android:pathData="M 5 75 c 30 -5 80 -5 110 0 c 0 5 -50 5 -110 0 z" />
+
+    <!-- Spoilers / Rear wing -->
+    <path
+        android:fillColor="#1565C0"
+        android:pathData="M 5 25 h 15 v 15 h -15 z" />
+    <path
+        android:fillColor="#1565C0"
+        android:pathData="M 8 20 h 20 v 5 h -20 z" />
+
+    <!-- Main Body Streamlined -->
+    <path
+        android:fillColor="#1E88E5"
+        android:pathData="M 10 45 c 20 0 50 -15 80 0 c 15 5 25 15 25 25 l -110 0 c -5 -10 0 -25 5 -25 z" />
+
+    <!-- Stripes -->
+    <path
+        android:fillColor="#FFD54F"
+        android:pathData="M 20 50 l 70 0 l -5 5 l -70 0 z" />
+
+    <!-- Cockpit -->
+    <path
+        android:fillColor="#e0e0e0"
+        android:pathData="M 45 42 c 5 -10 15 -10 25 0 z" />
+
+    <!-- Wheels (Larger back, smaller front) -->
+    <path
+        android:fillColor="#212121"
+        android:pathData="M 30 65 m -14 0 a 14 14 0 1 1 28 0 a 14 14 0 1 1 -28 0" />
+    <path
+        android:fillColor="#FFB300"
+        android:pathData="M 30 65 m -6 0 a 6 6 0 1 1 12 0 a 6 6 0 1 1 -12 0" />
+
+    <path
+        android:fillColor="#212121"
+        android:pathData="M 95 68 m -10 0 a 10 10 0 1 1 20 0 a 10 10 0 1 1 -20 0" />
+    <path
+        android:fillColor="#FFB300"
+        android:pathData="M 95 68 m -4 0 a 4 4 0 1 1 8 0 a 4 4 0 1 1 -8 0" />
+</vector>

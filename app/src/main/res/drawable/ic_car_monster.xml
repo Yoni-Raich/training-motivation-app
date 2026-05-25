@@ -1,0 +1,65 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="80dp"
+    android:viewportWidth="120"
+    android:viewportHeight="80">
+
+    <!-- Monster truck has massive tires, big suspension, dramatic body -->
+
+    <!-- Shadow -->
+    <path
+        android:fillColor="#33000000"
+        android:pathData="M -5 78 c 20 0 110 0 130 0 c -10 2 -90 2 -130 0 z" />
+
+    <!-- Chassis / suspension bars -->
+    <path
+        android:strokeColor="#757575"
+        android:strokeWidth="3"
+        android:pathData="M 30 45 l 20 -15 m 40 15 l -20 -15" />
+
+    <!-- Body (Pick up style) -->
+    <path
+        android:fillColor="#9C27B0"
+        android:pathData="M 20 20 h 20 l 10 -15 h 30 l 10 15 h 20 a 5 5 0 0 1 5 5 v 10 a 5 5 0 0 1 -5 5 h -90 a 5 5 0 0 1 -5 -5 v -10 a 5 5 0 0 1 5 -5 z" />
+
+    <!-- Windows -->
+    <path
+        android:fillColor="#F3E5F5"
+        android:pathData="M 52 7 h 26 l 8 13 h -42 z" />
+    
+    <path
+        android:fillColor="#9C27B0"
+        android:pathData="M 65 7 v 13" android:strokeColor="#7B1FA2" android:strokeWidth="2"/>
+
+    <!-- Decals -->
+    <path
+        android:fillColor="#FFEB3B"
+        android:pathData="M 25 30 l 10 -5 l 5 5 l -10 5 z" />
+    <path
+        android:fillColor="#FFEB3B"
+        android:pathData="M 45 30 l 40 -5 l -5 5 l -40 5 z" />
+
+    <!-- MASSIVE WHEELS -->
+    <path
+        android:fillColor="#111111"
+        android:pathData="M 30 55 m -22 0 a 22 22 0 1 1 44 0 a 22 22 0 1 1 -44 0" />
+    <!-- Treads -->
+    <path
+        android:strokeColor="#333333"
+        android:strokeWidth="4"
+        android:pathData="M 30 55 m -20 0 a 20 20 0 1 1 40 0 a 20 20 0 1 1 -40 0" />
+    <path
+        android:fillColor="#E0E0E0"
+        android:pathData="M 30 55 m -8 0 a 8 8 0 1 1 16 0 a 8 8 0 1 1 -16 0" />
+
+    <path
+        android:fillColor="#111111"
+        android:pathData="M 90 55 m -22 0 a 22 22 0 1 1 44 0 a 22 22 0 1 1 -44 0" />
+    <path
+        android:strokeColor="#333333"
+        android:strokeWidth="4"
+        android:pathData="M 90 55 m -20 0 a 20 20 0 1 1 40 0 a 20 20 0 1 1 -40 0" />
+    <path
+        android:fillColor="#E0E0E0"
+        android:pathData="M 90 55 m -8 0 a 8 8 0 1 1 16 0 a 8 8 0 1 1 -16 0" />
+</vector>

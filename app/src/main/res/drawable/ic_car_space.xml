@@ -1,0 +1,53 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="80dp"
+    android:viewportWidth="120"
+    android:viewportHeight="80">
+
+    <!-- Glowing hover shadow -->
+    <path
+        android:fillColor="#4D00BCD4"
+        android:pathData="M 20 70 c 30 -5 50 -5 80 0 c -30 5 -50 5 -80 0 z" />
+
+    <!-- Thruster fire -->
+    <path
+        android:fillColor="#FF9800"
+        android:pathData="M 5 35 c -15 5 -15 15 0 20 c -5 -10 -5 -15 0 -20 z" />
+    <path
+        android:fillColor="#FFEB3B"
+        android:pathData="M 8 40 c -5 2 -5 8 0 10 c -2 -5 -2 -8 0 -10 z" />
+
+    <!-- Futuristic Body -->
+    <path
+        android:fillColor="#00BCD4"
+        android:pathData="M 15 45 l 20 -20 h 50 c 25 0 30 15 30 20 l -15 15 h -75 z" />
+
+    <!-- Details / Trims -->
+    <path
+        android:fillColor="#B2EBF2"
+        android:pathData="M 35 25 h 45 c 10 0 15 5 15 10 l -70 0 z" />
+
+    <path
+        android:fillColor="#006064"
+        android:pathData="M 100 45 c 5 0 10 5 10 10 h -20 c 0 -5 5 -10 10 -10 z" />
+
+    <!-- Cockpit dome -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M 45 35 h 35 c 5 -10 10 -15 20 -5 l -50 0 z" />
+
+    <!-- Hover pods (instead of wheels) -->
+    <path
+        android:fillColor="#424242"
+        android:pathData="M 30 60 h 20 v 5 h -20 z" />
+    <path
+        android:fillColor="#00BCD4"
+        android:pathData="M 35 65 m -3 0 a 3 3 0 1 1 6 0 a 3 3 0 1 1 -6 0" />
+
+    <path
+        android:fillColor="#424242"
+        android:pathData="M 80 60 h 20 v 5 h -20 z" />
+    <path
+        android:fillColor="#00BCD4"
+        android:pathData="M 85 65 m -3 0 a 3 3 0 1 1 6 0 a 3 3 0 1 1 -6 0" />
+</vector>

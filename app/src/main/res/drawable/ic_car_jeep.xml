@@ -1,0 +1,62 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="80dp"
+    android:viewportWidth="120"
+    android:viewportHeight="80">
+
+    <!-- Shadow -->
+    <path
+        android:fillColor="#33000000"
+        android:pathData="M 5 78 c 20 0 90 0 110 0 c -10 2 -90 2 -110 0 z" />
+
+    <!-- Chassis / suspension -->
+    <path
+        android:fillColor="#455A64"
+        android:pathData="M 20 50 h 80 v 10 h -80 z" />
+
+    <!-- Body -->
+    <path
+        android:fillColor="#4CAF50"
+        android:pathData="M 15 35 h 90 v 15 h -90 z" />
+
+    <!-- Roll Cage / Canopy -->
+    <path
+        android:fillColor="#388E3C"
+        android:pathData="M 30 35 v -20 h 40 l 15 20 z" />
+
+    <path
+        android:fillColor="#B2DFDB"
+        android:pathData="M 35 32 v -14 h 30 l 10 14 z" />
+
+    <path
+        android:fillColor="#388E3C"
+        android:pathData="M 50 18 v 14 h 4 v -14 z" />
+
+    <!-- Accessories -->
+    <!-- Spare tire -->
+    <path
+        android:fillColor="#212121"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="1"
+        android:pathData="M 8 35 m -6 0 a 6 6 0 1 1 12 0 a 6 6 0 1 1 -12 0" />
+
+    <!-- Huge Wheels -->
+    <path
+        android:fillColor="#212121"
+        android:pathData="M 30 65 m -16 0 a 16 16 0 1 1 32 0 a 16 16 0 1 1 -32 0" />
+    <path
+        android:fillColor="#9E9E9E"
+        android:pathData="M 30 65 m -6 0 a 6 6 0 1 1 12 0 a 6 6 0 1 1 -12 0" />
+
+    <path
+        android:fillColor="#212121"
+        android:pathData="M 90 65 m -16 0 a 16 16 0 1 1 32 0 a 16 16 0 1 1 -32 0" />
+    <path
+        android:fillColor="#9E9E9E"
+        android:pathData="M 90 65 m -6 0 a 6 6 0 1 1 12 0 a 6 6 0 1 1 -12 0" />
+
+    <!-- Headlight -->
+    <path
+        android:fillColor="#FFFF00"
+        android:pathData="M 103 40 h 5 v 5 h -5 z" />
+</vector>
