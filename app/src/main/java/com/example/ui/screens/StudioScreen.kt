@@ -159,17 +159,14 @@ fun StudioScreen(
                             .border(1.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.3f), RoundedCornerShape(24.dp)),
                         contentAlignment = Alignment.Center
                     ) {
-                        val activeColor = if (currentUpgrade.colorArgb != 0) Color(currentUpgrade.colorArgb) else carItem.color
-                        
-                        Image(
-                            painter = painterResource(id = getCarDrawable(carId)),
-                            contentDescription = carItem.name,
+                        com.example.ui.components.CarVisualIcon(
+                            carId = carId,
+                            currentUpgradeColorArgb = currentUpgrade.colorArgb,
+                            overrideBaseColor = carItem.color,
                             modifier = Modifier
                                 .fillMaxHeight(0.7f)
                                 .aspectRatio(1.5f),
-                            colorFilter = if (currentUpgrade.colorArgb != 0) {
-                                androidx.compose.ui.graphics.ColorFilter.tint(activeColor, androidx.compose.ui.graphics.BlendMode.Modulate)
-                            } else null
+                            showAura = true
                         )
                         
                         // Active indicator icons

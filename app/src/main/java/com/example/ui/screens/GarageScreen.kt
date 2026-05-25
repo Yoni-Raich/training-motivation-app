@@ -237,22 +237,12 @@ fun CarCard(
             verticalArrangement = Arrangement.SpaceBetween
         ) {
             // Visual block simulating a car
-            Box(
-                modifier = Modifier
-                    .size(80.dp)
-                    .clip(RoundedCornerShape(8.dp)),
-                contentAlignment = Alignment.Center
-            ) {
-                androidx.compose.foundation.Image(
-                    painter = androidx.compose.ui.res.painterResource(id = getCarDrawable(car.id)),
-                    contentDescription = car.name,
-                    modifier = Modifier.fillMaxSize(),
-                    contentScale = androidx.compose.ui.layout.ContentScale.Fit,
-                    colorFilter = if (upgradeColorArgb != 0) {
-                        androidx.compose.ui.graphics.ColorFilter.tint(carColor, androidx.compose.ui.graphics.BlendMode.Modulate)
-                    } else null
-                )
-            }
+            com.example.ui.components.CarVisualIcon(
+                carId = car.id,
+                currentUpgradeColorArgb = upgradeColorArgb,
+                overrideBaseColor = car.color,
+                modifier = Modifier.size(80.dp)
+            )
             
             Spacer(Modifier.height(4.dp))
             Text(car.name, style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.Bold, maxLines = 1)

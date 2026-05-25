@@ -21,6 +21,7 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Path
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -101,10 +102,6 @@ fun SimpleTrack(
                 .fillMaxWidth()
                 .height(240.dp)
                 .clip(RoundedCornerShape(16.dp))
-                .clickable { 
-                    // Let users / kids tap to cycle biomes!
-                    backgroundIndex = (backgroundIndex + 1) % 15 
-                }
         ) {
             val totalWidth = maxWidth
             val padding = 32.dp
@@ -903,13 +900,17 @@ fun SimpleTrack(
                     }
                 }
 
-                Image(
-                    painter = painterResource(id = getCarDrawable(carId)),
-                    contentDescription = "Car",
+                com.example.ui.components.CarVisualIcon(
+                    carId = carId,
+                    currentUpgradeColorArgb = if (carColor != Color.Unspecified && carColor != Color.Transparent) {
+                        try {
+                            carColor.toArgb()
+                        } catch (e: Exception) {
+                            0
+                        }
+                    } else 0,
                     modifier = Modifier.fillMaxSize(),
-                    colorFilter = if (carColor != Color.Unspecified && carColor != Color.Transparent) {
-                        androidx.compose.ui.graphics.ColorFilter.tint(carColor, androidx.compose.ui.graphics.BlendMode.Modulate)
-                    } else null
+                    showAura = false
                 )
             }
 
@@ -937,7 +938,7 @@ fun SimpleTrack(
                     .padding(horizontal = 8.dp, vertical = 4.dp)
             ) {
                 Text(
-                    text = "🎯 לחצו להחלפת מסלול",
+                    text = "🔄 רקע משתנה בסיום מסלול",
                     color = Color(0xFFE0E0E0),
                     style = MaterialTheme.typography.labelSmall
                 )
