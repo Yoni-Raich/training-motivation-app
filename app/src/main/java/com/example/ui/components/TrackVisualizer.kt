@@ -23,6 +23,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.compose.ui.text.font.FontWeight
 import com.example.ui.screens.getCarDrawable
 import kotlin.math.sin
@@ -55,7 +56,11 @@ fun SimpleTrack(
     currentPoints: Int,
     targetPoints: Int,
     carId: String,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    carColor: Color = Color.Unspecified,
+    engineLevel: Int = 1,
+    turboLevel: Int = 1,
+    wheelsLevel: Int = 1
 ) {
     val progress = (currentPoints.toFloat() / targetPoints.coerceAtLeast(1).toFloat()).coerceIn(0f, 1f)
     
@@ -873,7 +878,9 @@ fun SimpleTrack(
         
             // Colorful Vehicle sitting beautifully on the road center with slight wheel bounce!
             val currentXPx = padding + (trackLength * animatedProgress)
-            val bounceY = (abs(sin(ambientSecs * 6f)) * 2f).dp // cute driving wheel bounce of 0dp - 2dp
+            val speedFactor = 1f + (wheelsLevel - 1) * 0.4f
+            val bounceHeight = 2f + (wheelsLevel - 1) * 0.8f
+            val bounceY = (abs(sin(ambientSecs * 6f * speedFactor)) * bounceHeight).dp // cute driving wheel bounce
 
             Box(
                 modifier = Modifier
@@ -881,10 +888,28 @@ fun SimpleTrack(
                     .size(110.dp, 66.dp),
                 contentAlignment = Alignment.Center
             ) {
+                // Rocket Booster Fire if Turbo upgraded!
+                if (turboLevel > 1) {
+                    val fireSize = (14 + turboLevel * 5).sp
+                    Box(
+                        modifier = Modifier
+                            .align(Alignment.CenterStart)
+                            .offset(x = (-16).dp, y = 6.dp)
+                    ) {
+                        Text(
+                            text = "🔥",
+                            fontSize = fireSize
+                        )
+                    }
+                }
+
                 Image(
                     painter = painterResource(id = getCarDrawable(carId)),
                     contentDescription = "Car",
-                    modifier = Modifier.fillMaxSize()
+                    modifier = Modifier.fillMaxSize(),
+                    colorFilter = if (carColor != Color.Unspecified && carColor != Color.Transparent) {
+                        androidx.compose.ui.graphics.ColorFilter.tint(carColor, androidx.compose.ui.graphics.BlendMode.Modulate)
+                    } else null
                 )
             }
 

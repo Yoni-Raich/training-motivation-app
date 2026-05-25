@@ -25,6 +25,9 @@ fun RaceScreen(
     onBack: () -> Unit
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    val carUpgrades by viewModel.carUpgrades.collectAsStateWithLifecycle()
+    val upgradeMap = remember(carUpgrades) { carUpgrades.associateBy { it.carId } }
+    
     var showAddPointsDialog by remember { mutableStateOf(false) }
 
     var showRewardDialog by remember { mutableStateOf(false) }
@@ -106,11 +109,22 @@ fun RaceScreen(
                     )
                     Spacer(modifier = Modifier.height(32.dp))
                     
+                    val currentCarUpgrade = upgradeMap[profile.currentCarId]
+                    val currentCarColor = if (currentCarUpgrade != null && currentCarUpgrade.colorArgb != 0) {
+                        androidx.compose.ui.graphics.Color(currentCarUpgrade.colorArgb)
+                    } else {
+                        androidx.compose.ui.graphics.Color.Unspecified
+                    }
+
                     // Track Visualization
                     SimpleTrack(
                         currentPoints = progress.currentPoints,
                         targetPoints = progress.targetPoints,
                         carId = profile.currentCarId,
+                        carColor = currentCarColor,
+                        engineLevel = currentCarUpgrade?.engineLevel ?: 1,
+                        turboLevel = currentCarUpgrade?.turboLevel ?: 1,
+                        wheelsLevel = currentCarUpgrade?.wheelsLevel ?: 1,
                         modifier = Modifier.fillMaxWidth()
                     )
                     

@@ -12,11 +12,17 @@ import kotlinx.coroutines.launch
 class RaceViewModel(private val repository: RaceRepository) : ViewModel() {
     val uiState: StateFlow<RaceUiState> = repository.uiStateFlow.stateIn(
         scope = viewModelScope,
-        started = SharingStarted.WhileSubscribed(5000),
+        started = SharingStarted.Eagerly,
         initialValue = RaceUiState.Loading
     )
     
     val ownedItems = repository.ownedItemsFlow.stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000),
+        initialValue = emptyList()
+    )
+
+    val carUpgrades = repository.carUpgradesFlow.stateIn(
         scope = viewModelScope,
         started = SharingStarted.WhileSubscribed(5000),
         initialValue = emptyList()
@@ -49,6 +55,18 @@ class RaceViewModel(private val repository: RaceRepository) : ViewModel() {
     fun equipCar(carId: String) {
         viewModelScope.launch {
             repository.equipCar(carId)
+        }
+    }
+
+    fun buyCarUpgrade(carId: String, category: String, price: Int) {
+        viewModelScope.launch {
+            repository.buyCarUpgrade(carId, category, price)
+        }
+    }
+
+    fun buyCarPaint(carId: String, colorValue: Int, price: Int) {
+        viewModelScope.launch {
+            repository.buyCarPaint(carId, colorValue, price)
         }
     }
 }

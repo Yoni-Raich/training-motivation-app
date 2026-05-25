@@ -35,6 +35,16 @@ data class OwnedItem(
     @PrimaryKey val itemId: String
 )
 
+@Entity(tableName = "car_upgrades")
+data class CarUpgrade(
+    @PrimaryKey val carId: String,
+    val colorArgb: Int = 0, // 0 means default/no-tint
+    val engineLevel: Int = 1,
+    val turboLevel: Int = 1,
+    val wheelsLevel: Int = 1,
+    val selectedSticker: String = "None"
+)
+
 @Dao
 interface KidsDao {
     @Query("SELECT * FROM profiles LIMIT 1")
@@ -66,11 +76,20 @@ interface KidsDao {
 
     @Query("SELECT * FROM owned_items")
     fun getOwnedItemsFlow(): Flow<List<OwnedItem>>
+
+    @Query("SELECT * FROM car_upgrades WHERE carId = :carId")
+    suspend fun getCarUpgrade(carId: String): CarUpgrade?
+
+    @Query("SELECT * FROM car_upgrades")
+    fun getAllCarUpgradesFlow(): Flow<List<CarUpgrade>>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertCarUpgrade(upgrade: CarUpgrade)
 }
 
 @Database(
-    entities = [ChildProfile::class, TrackProgress::class, PointEvent::class, OwnedItem::class],
-    version = 1,
+    entities = [ChildProfile::class, TrackProgress::class, PointEvent::class, OwnedItem::class, CarUpgrade::class],
+    version = 2,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {

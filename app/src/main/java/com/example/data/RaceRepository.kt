@@ -27,17 +27,14 @@ class RaceRepository(private val context: Context) {
     val trackProgressFlow = dao.getTrackProgressFlow("city_track")
     val recentEventsFlow = dao.getRecentEventsFlow()
     val ownedItemsFlow = dao.getOwnedItemsFlow()
+    val carUpgradesFlow = dao.getAllCarUpgradesFlow()
 
     // Combining data for the UI
     val uiStateFlow = combine(profileFlow, trackProgressFlow) { profile, track ->
         if (profile == null) return@combine RaceUiState.NeedsSetup
         if (track == null) return@combine RaceUiState.Loading
         RaceUiState.Success(profile, track)
-    }.stateIn(
-        scope = CoroutineScope(Dispatchers.Main),
-        started = SharingStarted.WhileSubscribed(5000),
-        initialValue = RaceUiState.Loading
-    )
+    }
     
     suspend fun createProfile(name: String) = withContext(Dispatchers.IO) {
         dao.insertProfile(ChildProfile(name = name))
@@ -89,6 +86,43 @@ class RaceRepository(private val context: Context) {
     suspend fun equipCar(carId: String) = withContext(Dispatchers.IO) {
         val profile = dao.getProfile() ?: return@withContext
         dao.insertProfile(profile.copy(currentCarId = carId))
+    }
+
+    suspend fun loadCarUpgrade(carId: String): CarUpgrade = withContext(Dispatchers.IO) {
+        return@withContext dao.getCarUpgrade(carId) ?: CarUpgrade(carId = carId)
+    }
+
+    suspend fun saveCarUpgrade(upgrade: CarUpgrade) = withContext(Dispatchers.IO) {
+        dao.insertCarUpgrade(upgrade)
+    }
+
+    suspend fun buyCarUpgrade(carId: String, category: String, price: Int): Boolean = withContext(Dispatchers.IO) {
+        val profile = dao.getProfile() ?: return@withContext false
+        if (profile.coins >= price) {
+            val current = dao.getCarUpgrade(carId) ?: CarUpgrade(carId = carId)
+            val updated = when (category) {
+                "engine" -> current.copy(engineLevel = minOf(5, current.engineLevel + 1))
+                "turbo" -> current.copy(turboLevel = minOf(5, current.turboLevel + 1))
+                "wheels" -> current.copy(wheelsLevel = minOf(5, current.wheelsLevel + 1))
+                else -> current
+            }
+            dao.insertProfile(profile.copy(coins = profile.coins - price))
+            dao.insertCarUpgrade(updated)
+            return@withContext true
+        }
+        return@withContext false
+    }
+
+    suspend fun buyCarPaint(carId: String, colorValue: Int, price: Int): Boolean = withContext(Dispatchers.IO) {
+        val profile = dao.getProfile() ?: return@withContext false
+        if (profile.coins >= price) {
+            val current = dao.getCarUpgrade(carId) ?: CarUpgrade(carId = carId)
+            val updated = current.copy(colorArgb = colorValue)
+            dao.insertProfile(profile.copy(coins = profile.coins - price))
+            dao.insertCarUpgrade(updated)
+            return@withContext true
+        }
+        return@withContext false
     }
 }
 

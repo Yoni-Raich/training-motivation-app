@@ -63,13 +63,13 @@ fun HomeworkRaceApp() {
     LaunchedEffect(uiState) {
         if (uiState is RaceUiState.NeedsSetup) {
             navController.navigate("setup") {
-                popUpTo(0) { inclusive = true }
+                popUpTo("loading") { inclusive = true }
             }
         } else if (uiState is RaceUiState.Success) {
             val dest = navController.currentDestination?.route
-            if (dest == "setup" || dest == null) {
+            if (dest == "setup" || dest == "loading" || dest == null) {
                 navController.navigate("home") {
-                    popUpTo(0) { inclusive = true }
+                    popUpTo("loading") { inclusive = true }
                 }
             }
         }
@@ -103,6 +103,15 @@ fun HomeworkRaceApp() {
         composable("garage") {
             GarageScreen(
                 viewModel = viewModel,
+                onBack = { navController.popBackStack() },
+                onEditCar = { carId -> navController.navigate("studio/$carId") }
+            )
+        }
+        composable("studio/{carId}") { backStackEntry ->
+            val carId = backStackEntry.arguments?.getString("carId") ?: "basic_car"
+            com.example.ui.screens.StudioScreen(
+                viewModel = viewModel,
+                carId = carId,
                 onBack = { navController.popBackStack() }
             )
         }
